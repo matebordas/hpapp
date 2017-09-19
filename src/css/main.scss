@@ -29,12 +29,25 @@ body, html {
 .hotel {
     //background: blue;
     width: 80%;
-    height: 255px;
+
+    //TODO: animate height change
+    //height: 255px;
+    height: 455px;
     margin: 0 auto 40px auto;
     border: 1px solid;
     border-radius: 4px;
-    display: flex;
+    //display: flex;
     //margin-bottom: 40px;
+}
+
+.hotel-footer {
+    position: absolute;
+    width: calc(100% - 20px);
+    bottom: 30px;
+}
+
+.hotel__content {
+    display: flex;
 }
 
 //Keep 4:3 ratio
@@ -91,9 +104,13 @@ body, html {
 }
 
 .price-and-date {
-    height: 100px;
-    right: 0;
-    float: right;
+    //height: 100px;
+   // right: 0;
+    //float: right;
+    text-align: right;
+    right: 20px;
+    position: absolute;
+    bottom: 0;
 }
 
 .show-review-button {
@@ -109,4 +126,12 @@ body, html {
     border-radius: 4px;
     position: absolute;
     bottom: 0;
+}
+
+.review-list {
+    height: 200px;
+    width: 100%;
+    background: red;
+    display: block;
+    overflow: auto;
 }

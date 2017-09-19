@@ -1,6 +1,8 @@
 export function template(options) {
     return `
           <div class="hotel">
+            <div class="hotel__content">
+            
             <div class="hotel-image">
              <img src="${options.images[0]}" alt="hotel-image">
             </div>
@@ -34,7 +36,7 @@ export function template(options) {
                     </article>
                 </main>
                 
-                <footer>       
+                <footer class="hotel-footer">       
                     <button type="button" class="show-review-button" data-hotel-id="${options.id}">Show reviews</button>
                    
                     <span class="price-and-date">
@@ -45,6 +47,10 @@ export function template(options) {
                     </span>
                 </footer>    
             </div>
+            
+            </div>
+            
+            <div class="review-list"></div>
         </div>
         `;
 }
