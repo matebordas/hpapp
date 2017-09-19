@@ -34,7 +34,7 @@ export class MainView {
 
         hotels.forEach(hotel => {
             hotelListElement.append(
-                this.hotelItemView.getTeamplte(hotel)
+                this.hotelItemView.getTemplate(hotel)
             )
         });
     }

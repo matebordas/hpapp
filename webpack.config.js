@@ -46,7 +46,8 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery",
-            "window.jQuery": "jquery"
+            "window.jQuery": "jquery",
+            lodash: "lodash"
         })
     ],
     devtool: 'source-map'
