@@ -1,6 +1,7 @@
-/*
-(function() {
+import {MainView} from "./main.view";
 
-    console.log('hereeeee');
-})();*/
-console.log('Hey guys and ladies!!');
+(() => {
+    //const testComponent = new TestComponent();
+    var mainView = new MainView();
+    mainView.initViewListeners();
+})();

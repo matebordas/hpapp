@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require("webpack");
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
     template: './src/index.html',
@@ -41,6 +42,12 @@ module.exports = {
     },
     plugins: [
         HtmlWebpackPluginConfig,
-        extractSass
-    ]
+        extractSass,
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery"
+        })
+    ],
+    devtool: 'source-map'
 };
