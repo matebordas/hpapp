@@ -11,21 +11,21 @@ export class HotelItemView {
     }
 
     formatDate(dateStr) {
-        const date = new Date(dateStr);
+        let date = new Date(dateStr);
         return date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
     }
 
     showReviews(hotelId) {
         let self = this;
+        let hotelElement = $(`[data-hotel-id="hotel-${hotelId}"]`);
+        console.log(hotelElement);
 
         this.hotelService.getReview({
             hotelId: hotelId,
             success: (result) => {
-                //console.log(result);
-                //self.showHotels(result);
-                const reviewListEl = $('.review-list');
+                let reviewListEl = hotelElement.find('.review-list');
+                reviewListEl.addClass('review-list-open');
 
-                //TODO: attach only to the elementc clicked
                 result.forEach(review => {
                     reviewListEl.append(
                         self.hotelReviewView.getTemplate(review)
@@ -44,7 +44,6 @@ export class HotelItemView {
         let self = this;
 
         $('.hotel-list').on('click', '.show-review-button',(e) => {
-            console.log('hereeeeee');
             self.showReviews(e.target.dataset.hotelId);
             e.stopImmediatePropagation();
         });

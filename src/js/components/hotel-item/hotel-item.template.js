@@ -1,6 +1,6 @@
 export function template(options) {
     return `
-          <div class="hotel">
+          <div class="hotel" data-hotel-id="hotel-${options.id}">
             <div class="hotel__content">
             
             <div class="hotel-image">
