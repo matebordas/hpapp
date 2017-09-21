@@ -12,7 +12,18 @@ export class HotelItemView {
 
     formatDate(dateStr) {
         let date = new Date(dateStr);
-        return date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+
+        if (day.toString().length === 1) {
+            day = "0" + day;
+        }
+        if (month.toString().length === 1) {
+            month = "0" + month;
+        }
+
+        //return date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
+        return `${day}.${month}.${date.getFullYear()}`;
     }
 
     showReviews(hotelId) {
