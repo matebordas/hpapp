@@ -1,19 +1,36 @@
 body, html {
     margin:0;
+    //height: 100%;
+}
+
+/*html{
     height: 100%;
+}
+body {
+    min-height: 100%;
+}*/
+
+.content-header {
+    height: 120px;
+    width: 100%;
+    background: #37454D;
 }
 
 .main-content {
     height: 100%;
     width: 100%;
-    //position: absolute;
-    background: #f4f7f6;
-    padding: 40px;
+    position: absolute;
+    //position: relative;
+    //background: #f4f7f6;
+    background: #EBECED;
+    //background: #37454D;
+    //padding: 40px;
+    //overflow: auto;
 }
 
 .load-button {
-    margin: 0px auto 40px auto;
-    display: block;
+    margin: 40px auto 40px auto;
+    //display: block;
     //background: #ffffff;
     box-shadow: none;
     //border: 1px solid #000000;
@@ -21,30 +38,51 @@ body, html {
     padding: 5px 10px 5px 10px;
     width: 150px;
     height: 40px;
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 16px;
    // border-radius: 4px;
 
-    background: #4d5256;
+    //background: #4d5256;
+    background: #007FAD;
     color: #ffffff;
+
+    position: relative;
+    display: inline-block;
+    left: 50%;
 }
 
 .hotel-list {
+    //background: #EBECED;
+    overflow: auto;
     width: 100%;
-    height: 100%;
+    //height: 100%;
+    height: 0;
+
+    &.visible {
+        //height: 100%;
+        height: calc(100% - 120px);
+    }
 }
 
 .hotel {
     width: 80%;
     margin: 0 auto 40px auto;
-    border: 1px solid #b3c2bf;
-    border-radius: 4px;
-    background: #e9ece5;
+    //border: 1px solid #b3c2bf;
+    //border-radius: 4px;
+    //background: #e9ece5;
+    background: #ffffff;
+    box-shadow: 0 1px 4px rgba(41,51,57,.5);
+}
+
+.hotel__content {
+    padding: 10px;
 }
 
 .hotel-footer {
     position: absolute;
     width: calc(100% - 20px);
-    bottom: 30px;
+    //bottom: 30px;
+    bottom: 0;
 }
 
 .hotel__content {
@@ -114,17 +152,22 @@ body, html {
     //background: #ffffff;
     box-shadow: none;
     //border: 1px solid #000000;
-    border: 1px solid #4d5256;
+    //border: 1px solid #4d5256;
     padding: 5px 10px 5px 10px;
     width: 150px;
     height: 40px;
-    font-weight: 600;
+    //font-weight: 600;
+    font-size: 16px;
+    font-weight: 500;
     //border-radius: 4px;
     position: absolute;
     bottom: 0;
 
-    background: #4d5256;
+    //background: #4d5256;
     color: #ffffff;
+
+    background-color: #428500;
+    border: 1px solid #428500;
     //border-color: #4d5256;
 
    /* color: #333;

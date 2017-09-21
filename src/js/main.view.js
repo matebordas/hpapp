@@ -11,8 +11,11 @@ export class MainView {
     initViewListeners() {
         let self = this;
         const loadButton = $('.load-button');
+        const hotelList = $('.hotel-list');
 
         loadButton.click(function() {
+            hotelList.addClass('visible');
+
             self.hotelService.getHotels(
                 (result) => {
                     console.log('result');
