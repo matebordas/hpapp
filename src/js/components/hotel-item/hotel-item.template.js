@@ -1,20 +1,20 @@
-export function template(options) {
+export function template(hotel) {
     return `
-          <div class="hotel" data-hotel-id="hotel-${options.id}">
+          <div class="hotel" data-hotel-id="hotel-${hotel.id}">
             <div class="hotel__content">
             
             <div class="hotel-image">
-             <img src="${options.images[0]}" alt="hotel-image">
+             <img src="${hotel.images[0]}" alt="hotel-image">
             </div>
 
             
             <div class="hotel-info">
                 <header>
                     <span class="header-left">
-                        <div class="hotel-name">${options.name}</div>
+                        <div class="hotel-name">${hotel.name}</div>
                         
                         <div class="hotel-location">
-                            ${options.city} - ${options.country}
+                            ${hotel.city} - ${hotel.country}
                         </div>
                     </span>
                     
@@ -23,7 +23,7 @@ export function template(options) {
                             
                             ${[1,2,3,4,5].map((i) => {
                                 let className = 'hotel-star';
-                                className += ((i <= options.stars) ? " filled" : "");
+                                className += ((i <= hotel.stars) ? " filled" : "");
                                 return '<span class="' + className + '">&#x2605;</span>'
                             }).join(' ')}
                         </div>
@@ -32,17 +32,17 @@ export function template(options) {
        
                 <main class="hotel-description">
                      <article class="hotel-description__text">
-                        ${options.description}
+                        ${hotel.description}
                     </article>
                 </main>
                 
                 <footer class="hotel-footer">       
-                    <button type="button" class="show-review-button" data-hotel-id="${options.id}">Show reviews</button>
+                    <button type="button" class="show-review-button" data-hotel-id="${hotel.id}">Show reviews</button>
                    
                     <span class="price-and-date">
-                        <div class="hotel-price">${options.price} &#8364;</div>
+                        <div class="hotel-price">${hotel.price} &#8364;</div>
                         <div class="hotel-date">
-                             ${this.formatDate(options.date_start)} - ${this.formatDate(options.date_end)}
+                             ${this.formatDate(hotel.date_start)} - ${this.formatDate(hotel.date_end)}
                         </div>
                     </span>
                 </footer>    
@@ -50,7 +50,9 @@ export function template(options) {
             
             </div>
             
-            <div class="review-list"></div>
+            <div class="review-list">
+                <div class="hotel-review no-review">There are no review for this hotel.</div>
+            </div>
         </div>
         `;
 }

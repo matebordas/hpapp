@@ -5,7 +5,6 @@ import {HotelReviewView} from "../hotel-review/hotel-reivew.view";
 export class HotelItemView {
 
     constructor() {
-        this.options = {};
         this.hotelService = new HotelService();
         this.hotelReviewView = new HotelReviewView();
     }
@@ -22,14 +21,12 @@ export class HotelItemView {
             month = "0" + month;
         }
 
-        //return date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
         return `${day}.${month}.${date.getFullYear()}`;
     }
 
     showReviews(hotelId) {
         let self = this;
         let hotelElement = $(`[data-hotel-id="hotel-${hotelId}"]`);
-        console.log(hotelElement);
 
         this.hotelService.getReview({
             hotelId: hotelId,
@@ -37,28 +34,47 @@ export class HotelItemView {
                 let reviewListEl = hotelElement.find('.review-list');
                 reviewListEl.addClass('review-list-open');
 
-                result.forEach(review => {
-                    reviewListEl.append(
-                        self.hotelReviewView.getTemplate(review)
-                    )
-                });
+                if (result.length === 0) {
+                    reviewListEl.find('.no-review').show();
+                } else {
+                    reviewListEl.find('.no-review').hide();
+                    result.forEach(review => {
+                        reviewListEl.append(
+                            self.hotelReviewView.getTemplate(review)
+                        )
+                    });
+                }
             },
             error: (error) => {
-                console.log(error);
+                console.log(error.responseText);
             }
         });
     }
 
-    getTemplate(options) {
-
-        let templateResult = template.call(this, options);
+    initEventListeners() {
         let self = this;
 
-        $('.hotel-list').on('click', '.show-review-button',(e) => {
-            self.showReviews(e.target.dataset.hotelId);
+        $('.show-review-button').click((e) => {
+            let hotelElement = $(`[data-hotel-id="hotel-${e.target.dataset.hotelId}"]`);
+            let reviewListEl = hotelElement.find('.review-list');
+
+            if (reviewListEl.height() === 0) {
+                $(e.target).text('Hide reviews');
+                self.showReviews(e.target.dataset.hotelId);
+            } else {
+                $(e.target).text('Show reviews');
+
+                let hotelElement = $(`[data-hotel-id="hotel-${e.target.dataset.hotelId}"]`);
+                let reviewListEl = hotelElement.find('.review-list');
+
+                reviewListEl.removeClass('review-list-open');
+            }
+
             e.stopImmediatePropagation();
         });
+    }
 
-        return templateResult;
+    getTemplate(options) {
+        return template.call(this, options);
     }
 }

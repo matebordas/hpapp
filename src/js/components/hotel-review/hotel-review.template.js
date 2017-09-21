@@ -1,12 +1,14 @@
-export function template(options) {
+export function template(review) {
     return `
          <div class="hotel-review">
-            <span class="review-type"> ${(options.positive) ? '+' : '-'}</span>
+            <span class="review-type">
+                    ${(review.positive) ? '<i class="fa fa-plus-circle"></i>' : '<i class="fa fa-minus-circle"></i>'}
+            </span>
             
             <span class="review-content">
-                <div class="reviewer-name">${options.name}</div>
+                <div class="reviewer-name">${review.name}</div>
                 <article class="review-text">
-                    ${options.comment}
+                    ${review.comment}
                 </article>
             </span>
          </div>
