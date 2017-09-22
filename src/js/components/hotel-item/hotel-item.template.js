@@ -50,9 +50,11 @@ export function template(hotel) {
             
             </div>
             
-            <div class="review-list">
+            <div class="review-section">
+                <div class="review-list">
+                </div>
                 <div class="hotel-review no-review">There are no review for this hotel.</div>
-            </div>
+             </div>
         </div>
         `;
 }

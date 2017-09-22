@@ -32,12 +32,13 @@ export class HotelItemView {
             hotelId: hotelId,
             success: (result) => {
                 let reviewListEl = hotelElement.find('.review-list');
-                reviewListEl.addClass('review-list-open');
+                let reviewSection = hotelElement.find('.review-section');
+                reviewSection.addClass('review-section-open');
 
                 if (result.length === 0) {
-                    reviewListEl.find('.no-review').show();
+                    reviewSection.find('.no-review').show();
                 } else {
-                    reviewListEl.find('.no-review').hide();
+                    reviewSection.find('.no-review').hide();
                     result.forEach(review => {
                         reviewListEl.append(
                             self.hotelReviewView.getTemplate(review)
@@ -57,17 +58,16 @@ export class HotelItemView {
         $('.show-review-button').click((e) => {
             let hotelElement = $(`[data-hotel-id="hotel-${e.target.dataset.hotelId}"]`);
             let reviewListEl = hotelElement.find('.review-list');
+            let reviewSection = hotelElement.find('.review-section');
 
-            if (reviewListEl.height() === 0) {
+            if (reviewSection.height() === 0) {
                 $(e.target).text('Hide reviews');
                 self.showReviews(e.target.dataset.hotelId);
             } else {
                 $(e.target).text('Show reviews');
 
-                let hotelElement = $(`[data-hotel-id="hotel-${e.target.dataset.hotelId}"]`);
-                let reviewListEl = hotelElement.find('.review-list');
-
-                reviewListEl.removeClass('review-list-open');
+                reviewSection.removeClass('review-section-open');
+                reviewListEl.empty();
             }
 
             e.stopImmediatePropagation();
