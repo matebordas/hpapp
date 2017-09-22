@@ -10,13 +10,13 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 });
 
 const extractSass = new ExtractTextPlugin({
-    filename: 'css/main.css',
+    filename: 'css/styles.css',
     allChunks: true
 });
 
 module.exports = {
     entry: [
-        './src/css/main.scss',
+        './src/css/styles.scss',
         './src/js/main.js'
     ],
     output: {

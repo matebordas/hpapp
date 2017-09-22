@@ -1,0 +1,73 @@
+@import 'variables';
+$load-button-width: 150px;
+
+body, html {
+    margin:0;
+}
+
+.content-header {
+    height: $content-header-height;
+    width: 100%;
+    background: #37454D;
+}
+
+.main-content {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: #EBECED;
+}
+
+@keyframes expand-list {
+    0%   {height: 0;}
+    100% {height: 200px;}
+}
+
+.review-list {
+    height: 0;
+    width: 100%;
+    display: block;
+    overflow: auto;
+    transition: height 0.75s;
+}
+
+.review-list-open  {
+    height: 200px;
+    transition: height 0.75s;
+}
+
+.load-button {
+    margin: 40px auto 40px auto;
+    box-shadow: none;
+    border: 0;
+    padding: 5px 10px 5px 10px;
+    width: $load-button-width;
+    height: 40px;
+    background: #007FAD;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 700;
+    font-family: Arial, Helvetica, Sans, Sans-Serif, Sans Serif, serif;
+
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(calc(-#{$load-button-width} / 2));
+
+    &:hover {
+        background-color: #005f81;
+    }
+}
+
+.notification-placeholder {
+    color: #ffffff;
+    width: 80%;
+    margin: 30px auto 0 auto;
+    font-family: Rubik, serif;
+    font-weight: 500;
+    font-size: 26px;
+    padding: 50px;
+    background: #337ab7;
+}
+

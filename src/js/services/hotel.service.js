@@ -9,7 +9,7 @@ export class HotelService {
             url: this.apiURL + '/hotels',
             data:  {
                 //force_error: true,
-                no_error: true,
+                //no_error: true,
                 count: 20
             }
         }).done(function(data, textStatus, jqXHR) {

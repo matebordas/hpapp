@@ -8,6 +8,8 @@ export class MainView {
         this.hotelItemView = new HotelItemView();
 
         this.hotelListElement = $('.hotel-list');
+
+        this.hotelsList = [];
     }
 
     initViewListeners() {
@@ -19,6 +21,13 @@ export class MainView {
 
             self.hotelService.getHotels(
                 (result) => {
+                    if (self.hotelsList.length > 0) {
+                        self.hotelListElement.find("*").off();
+                        self.hotelListElement.empty();
+                    }
+
+                    self.hotelsList = result;
+
                     self.hotelListElement.addClass('visible');
                     self.showHotels(result);
                     notificationEl.hide();
@@ -26,7 +35,13 @@ export class MainView {
                 (error) => {
                     console.log(error.responseText);
 
+                    self.hotelsList = [];
+
+                    self.hotelListElement.find("*").off();
+                    self.hotelListElement.empty();
                     self.hotelListElement.removeClass('visible');
+
+                    notificationEl.show();
                     notificationEl.text('An error occurred');
                     notificationEl.css('background', '#d9534f');
                 }
