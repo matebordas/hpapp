@@ -1,8 +1,9 @@
-import {template} from './hotel-review.template';
+import {template} from 'lodash';
+import templateView from './hotel-review.html'
 
 export class HotelReviewView {
 
     getTemplate(data) {
-        return template.call(this, data);
+        return template(templateView)({review: data});
     }
 }

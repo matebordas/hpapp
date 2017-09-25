@@ -1,6 +1,7 @@
-import {template} from "./hotel-item.template";
+import {template} from "lodash";
 import {HotelService} from "../../services/hotel.service";
 import {HotelReviewView} from "../hotel-review/hotel-reivew.view";
+import templateView from "./hotel-item.html";
 
 export class HotelItemView {
 
@@ -75,6 +76,11 @@ export class HotelItemView {
     }
 
     getTemplate(options) {
-        return template.call(this, options);
+        let self = this;
+
+        return template(templateView)({
+            hotel: options,
+            formatDate: self.formatDate
+        });
     }
 }
